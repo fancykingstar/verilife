@@ -1,0 +1,24 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.20628.921",
+  "ExtendedData": {
+    "Uri": "http://home.tenging.is:9257/IV-HQ-D2-92/WS/Retailing%20Enterprises%2C%20LLC/Codeunit/JSONService",
+    "Namespace": "JSONService",
+    "SelectedAccessLevelForGeneratedClass": "Public",
+    "GenerateMessageContract": false,
+    "ReuseTypesinReferencedAssemblies": true,
+    "ReuseTypesinAllReferencedAssemblies": true,
+    "CollectionTypeReference": {
+      "Item1": "System.Array",
+      "Item2": "System.Runtime.dll"
+    },
+    "DictionaryCollectionTypeReference": {
+      "Item1": "System.Collections.Generic.Dictionary`2",
+      "Item2": "System.Collections.dll"
+    },
+    "CheckedReferencedAssemblies": [],
+    "InstanceId": null,
+    "Name": "JSONService",
+    "Metadata": {}
+  }
+}

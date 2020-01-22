@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "invicta-loyalty",
+  "private_key_id": "56d43dc8664921bcda8eb7963020d10a93ff362d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCVwNapmYnOPJmq\nrhF5zIcDRHsBbet6v0dctFOWrlVzWhaW3ZC2WrPiXDRsCf3agGxqxdMbUpO8Ru0W\nfWXFJrQ/PNMFJBdtLXcqTPCicrYmrwVIj65j2tFYCM8WcB1qWf1/lqPdDyRAd10W\nHPSBYA77FlsY0BnsOzYsSiDsAUIyHzmSxMLOz5Y/p3REgup4e5nKreP3YVY/QPt+\ntd5ebk5JsJDvF04xjnsQ8lrVAXdMsH+x3uNRx/AV/OFMIJbgQUK8XYco2NbQZyam\nEzTVQWoIzUK1aR+bPj5nYKxFygDydalmVo0Cz9nv4KqdP4egJk1m8PonIU3HENQo\nDT9+sdmLAgMBAAECggEASpdMdRrUoMTfl7vvWXcuEssT59Db9356KatqbUX1qyjG\n0quW7rW8HvZlaCEL8D+CgSZ7MgNOMfw0EL0yKWLPaiY+R7PD9W4tioTbYVb48si/\nvXZP2039czekCt2aUUR0t44NncjyeifaVm7ivORfYeKvSmsxVlDh+WqM/nDcC4Ft\niwO0dHyHIDcaxbMxQzELswCJH8UF84aONJQOvBoYtGpBpFMrkh9EUVBqCNcFX3Aq\nQag1H2vqAxMDROMi1T8+TAEj8tlTWrGKSpnfj2nY6+BzS7n1KyIJjSNyYh48oy/b\ndfyc7T8znKOtyjtFbVy8TBMVZ66imAxOFTW8hof+5QKBgQDSTixh8pIYYaSPO8r3\nJqDlkXy73oN9KseLLPak21jtggfxd+GHTSg22FFLTQGjZUcBeF7wwz4FnDTXnHkD\nE5q/uinRqOR1Ko16Maj1cXnxNPAsWhPsVDQa9Sj/EAorzSLSrjPYlBrXTNM5E0uK\nH+mRbTHCDGxJeGf0UUx+yfjeZQKBgQC2SpKyZSm0ZZBHk/V0N3Vp69Nvr+NyFTIg\nftaOlIGpfVtuRTKB67q4fI2p97ReFOSnoSDQdx8Qrfa+baeSWnpO7QxCONmsQ2Md\nKsNHqkE0kARaM/hoO11fCNMraF3TTrAVHiPFpLpMD8mftwu6RZRa4bAOZZvKN8rV\nm8W/F54hLwKBgEZuH7b9waegq7e8UpDKwv+e5aMVNfvpI8KcYE19mB6SeY6Ik2L4\nmAsmDrOlKnNKK6l2YnVHLbI7SgcbQ/ufySeEdRTd9wS2J4NQtkDcq/X3wKdZ02pG\nGN0eVYh2GrHolUzxQjO6BfMsq2Bl8dpkLZiidRODjZBdXpMX1wJvKYVxAoGAHbFJ\n8dr+jw7YEICuQ47hBi7OkuuwfZ2sO5TNeA4CjMwJf42v62+tS22mWaAqdgSrNg7N\n3Ib6vWnIvj34RKOONprwGz1NX3zegRq9EkhONLScsOC0Pq4kyF0UoIZwegHgNqBh\nLUlmuwr7SZO0SlQZFTCbz8yHMsohtOeZr0W2kSsCgYAq2+pBqyzQIsd5aXXuebvC\nV2x5qdgNFuwKOLV4MJr7TD4xTz08zO0GyugsllfzaeKaZEUVd5KPUgxgHeb4VzaO\nsdCti2TKBUA2QZ4xB35LRhH/WSx12fhe2blczVMzQoMN2FY/8XyLVZYS1qzFS6jl\nmyBc9hlcL9GhDwoYEF+E1w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-xs98z@invicta-loyalty.iam.gserviceaccount.com",
+  "client_id": "107851570272093618214",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-xs98z%40invicta-loyalty.iam.gserviceaccount.com"
+}
