@@ -14,6 +14,7 @@
         >
           <q-tab name="name" label="Personal info" />
           <q-tab name="address" label="Address" />
+          <q-tab name="medical" label="Patient" />
         </q-tabs>
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel class="i-tab-pane" name="name">
@@ -49,6 +50,29 @@
             <contactaddress
             :open="addressDialogOpen"
             @close="addressDialogOpen = false"/>
+          </q-tab-panel>
+           <q-tab-panel class="i-tab-pane" name="medical">
+              <span class="i-change-input-title" style="padding-top:0px">  Driving License ID</span>
+              <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.drivingLicenseID" />
+
+             <span class="i-change-input-title" >  Patient ID</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.patientID" />
+
+             <!--  <span class="i-change-input-title" > Patient ID Exp Date</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.patientIDExpDate" /> -->
+
+              <span class="i-change-input-title" >  State ID</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.stateID" />
+
+             <span class="i-change-input-title" >  Prescription ID</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.prescriptionID" />
+
+             <span class="i-change-input-title" >  Doctor ID</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.doctorID" />
+
+             <span class="i-change-input-title" > Doctor Recomendation No</span>
+             <q-input color="grey-5" :disable="true" square outlined  v-model="contact.externalInfo.doctorRecomendationNo" />
+
           </q-tab-panel>
           </q-tab-panels>
 
@@ -429,7 +453,10 @@ export default {
         LastName: me.contact.lastName,
         Phone: me.contact.phone,
         Id: me.contact.id,
-        birthDay: me.contact.birthDay
+        birthDay: me.contact.birthDay,
+        MemberAccountID: me.contact.account.id,
+        ClubID: me.contact.account.scheme.club.id,
+        SchemeID: me.contact.account.scheme.id
       }
       me.$q.loading.show()
       contactService.contactUpdate(updatedContact).then((response) => {
@@ -443,7 +470,7 @@ export default {
           me.$q.loading.hide()
           return
         }
-        contactService.contactGetByCardId(me.contact.id).then((contact) => {
+        contactService.contactGetByCardId(me.contact.account.id).then((contact) => {
           me.setContact(contact)
           userData.setUserData(contact)
           me.$q.loading.hide()

@@ -15,12 +15,12 @@
             <div class="i-name-subtitle q-pt-sm">{{clubCode}} Member</div>
             <!-- <div v-if="schemeCode === '1'" class="i-name-subtitle q-pt-sm">Silver Member</div>
             <div v-if="schemeCode === '2'" class="i-name-subtitle q-pt-sm">Platinum Member</div> -->
-          <div class="i-name-subtitle">{{contact.id}} {{location}}</div>
+          <div class="i-name-subtitle" style="color:#58595b">{{contact.id}} {{location}}</div>
         </div>
         <div class="i-name-row-right">
-          <div class="i-name-diamond">
-            <img v-if="schemeCode === '1'" src="statics/Silver_white_shadow.png"/>
-            <img v-if="schemeCode === '2'" src="statics/Platinum_white_shadow.png"/>
+          <div class="i-name-diamond"><img :src="getImageUrl(schemeCode)" />
+            <!-- <img v-if="schemeCode === '1'" src="statics/Silver_white_shadow.png"/>
+            <img v-if="schemeCode === '2'" src="statics/Platinum_white_shadow.png"/> -->
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <div class="i-balance-container">
             <div class="i-balance-container-title-top">Member since {{createdDate}}</div>
              <div class="i-balance-container-point" v-if="contact.account">{{contact.account.pointBalance}}</div>
-              <div class="i-balance-container-title-bottom"><span>Den points</span></div>
+              <div class="i-balance-container-title-bottom"><span>Points</span></div>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
   padding-bottom:0px;
   padding-top:0px;
   background-image:none;
-  background: #777777;
+  background: black;
 }
 .i-home-arrow-down .q-btn--outline {
     border: 3px solid currentColor!important;
@@ -123,8 +123,7 @@ background-image: linear-gradient(135deg, #000000 40%, #575757 40%, #575757 50%,
 background-size: 14.14px 14.14px;
 }
 .i-home-container{
-  background-image:    url("/statics/gradient-bg.png");
-  background-size: cover;
+background:black;
   background-repeat:   no-repeat;
   background-position: center center;
 }
@@ -157,12 +156,12 @@ background-size: 14.14px 14.14px;
   text-transform: uppercase;
   color:white;
   font-size: 13px;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  border-top: 3px solid #58595b;
+  border-bottom: 3px solid #58595b;
   padding: 5px 0px;
 }
 .i-balance-container-title-bottom span{
-  border-top: 2px solid white;
+  border-top:3px solid #58595b;
   padding: 3px 0px;
 }
 .i-balance-container{
@@ -171,7 +170,7 @@ background-size: 14.14px 14.14px;
 }
 .i-qr-box{
   align-self: center;
-  background: #c6c6c6;
+  background: white;
   padding: 10px;
   box-shadow: 20px 20px 20px rgba(0,0,0,0.7);
 }
@@ -193,7 +192,7 @@ background-size: 14.14px 14.14px;
   display: flex;
   float: none;
   width: 170px;
-  height: 80px;
+  height: 100px;
   justify-content: center;
 }
 .i-name-diamond img{
@@ -232,7 +231,8 @@ background-size: 14.14px 14.14px;
 }
 .i-home-body{
   width:60%;
-  font-family: DinMedium;
+  font-family: Din;
+  font-weight: bold;
 }
 .i-qr-box{
   padding:5px;
@@ -320,7 +320,7 @@ export default {
         id: ''
       },
       clubCode: '', // 100 - customers, 200 - employees
-      schemeCode: '1', // 1 - silver, 2 - gold,
+      schemeCode: 'MEDICAL', // 1 - silver, 2 - gold,
       lastPurchaseDate: '',
       lastPurshasePoints: '',
       schemeExpirationDate: '',
@@ -352,10 +352,10 @@ export default {
       // me.schemeCode = contact.account.scheme.id
       if (contact) {
         me.contact = contact
-        contactService.contactGetByCardId(me.contact.id).then((contact) => {
+        contactService.contactGetByCardId(me.contact.account.id).then((contact) => {
           userData.setUserData(contact)
           me.contact = contact
-          // me.schemeCode = me.contact.account.scheme.id
+          me.schemeCode = me.contact.account.scheme.id
           me.clubCode = me.contact.account.scheme.club.id
           var contactExtInfo = JSON.parse(me.contact.externalInfo)
           me.lastPurchaseDate = moment(contactExtInfo.lastPurchaseDate).format('MMMM Do YYYY')
@@ -382,7 +382,7 @@ export default {
           me.$q.loading.hide()
         })
 
-        contactService.notificationsGetByContactId(me.contact.id).then((notifications) => {
+        contactService.notificationsGetByContactId(me.contact.account.id).then((notifications) => {
           var readNoti = localStorage.getItem('READ_NOTILIST')
           var count = 0
           if (readNoti) {

@@ -77,7 +77,7 @@
   font-size:12px;
   text-decoration: underline;
   cursor: pointer;
-  color: #40B149;
+  color: white;
 }
 .q-field__marginal{
   height: 40px;
@@ -100,8 +100,8 @@ color: #C7C8CA;
 }
 .i-page {
   font-family: Arimo;
-  background-color: #333333;
-    background-image:    url("/statics/CBD_Logo_TheDen_Green.png");
+  background-color: #000000;
+  background-image:    url("/statics/veri-logo.png");
   background-size:     auto 90%;
   background-repeat:   no-repeat;
   background-position: right 0px center;
@@ -121,7 +121,7 @@ color: #C7C8CA;
   align-items: center;
   text-align: center;
   color: #58595B;
-  background: #40B149;
+  background: #dadada;
   box-sizing: border-box;
   user-select: none;
 }
@@ -260,7 +260,6 @@ export default {
       })
     },
     loginClicked () {
-      /*
       var me = this
       me.$v.externalID.$touch()
       if (me.$v.externalID.$error) {
@@ -307,7 +306,6 @@ export default {
       }).then(() => {
         me.$q.loading.hide()
       })
-      */
     },
     login () {
       var me = this

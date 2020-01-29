@@ -181,6 +181,13 @@ function getFeaturedWatch () {
   })
 }
 
+function getLocations () {
+  return httpservice({
+    url: controller + 'GetLocations',
+    method: 'GET'
+  })
+}
+
 function contactCheckByEmail (email) {
   return httpservice({
     url: controller + 'ContactCheckByEmail',
@@ -232,7 +239,8 @@ const taskService = {
   getItemsPerGroup,
   getDigitalReceiptJSON,
   getRefundList,
-  getFeaturedWatch
+  getFeaturedWatch,
+  getLocations
 }
 
 export default taskService

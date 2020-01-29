@@ -34,94 +34,90 @@
     JObject.Add(JProperty.JProperty('bezelMaterial', StageItemAttributes."Bezel Material"));
     JObject.Add(JProperty.JProperty('crownType', StageItemAttributes."Crown Type"));
     JObject.Add(JProperty.JProperty('brand', StageItemAttributes.Brand));
-
+{
+  "no": "1911000001",
+  "description": "Flower - Alien Jack - 3.5g",
+  "GTIN": "",
+  "strainCode": "ALIEN JACK",
+  "itemCatefory": "Finished Premium Flower",
+  "productGroup": "Dry Flower",
+  "baseUnitOfMeasure": "EA",
+  "allowance": 0.0,
+  "THC": 0.0,
+  "CBD": 0.0,
+  "CBN": 0.0
+}
   -->
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Gender:
+                No:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.gender}}
+               {{itemDetail.no}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Case Size (mm):
+                Description
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.caseSize}}
+               {{itemDetail.description}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Case Material:
+                Strain Code:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.caseMaterial}}
+               {{itemDetail.strainCode}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Crystal Type:
+                Category
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.crystalType}}
+               {{itemDetail.itemCatefory}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Movement Caliber:
+                Product Group:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.movementCaliber}}
+               {{itemDetail.productGroup}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Function Type:
+                Unit Of Measure:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.functionType}}
+               {{itemDetail.baseUnitOfMeasure}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Dial Material:
+                THC:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.dialMaterial}}
+               {{itemDetail.THC}}
               </div>
             </div>
              <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Bezel Material:
+                CBD:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.bezelMaterial}}
+               {{itemDetail.CBD}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Crown Type:
+                CBN:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.crownType}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Brand:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.brand}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Water Resistance:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.waterResistance}}
+               {{itemDetail.CBN}}
               </div>
             </div>
           </div>
@@ -196,7 +192,7 @@ max-width: 300px;
 .i-watch-body-line-left{
   display: flex;
   flex-direction: row;
-  width: 60%;
+  width: 100%;
   padding-right: 10px;
   justify-content: flex-end;
   color:#818181;

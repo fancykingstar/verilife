@@ -20,7 +20,7 @@ namespace NAVAccess
         ContactRs Login(string userName, string password, string cardId);
         ContactRs ContactCreate(MemberContact contact);
         MemberContact ContactGetByCardId(string CardID);
-        void ContactUpdate(MemberContact contact, string accountId);
+        void ContactUpdate(MemberContact contact);
         List<Notification> NotificationsGetByContactId(string cardId, int numberOfNotifications);
         void SetURL(string Url);
 
@@ -242,7 +242,7 @@ namespace NAVAccess
             return string.Empty;
         }
 
-        public void ContactUpdate(MemberContact contact, string accountId)
+        public void ContactUpdate(MemberContact contact)
         {
             NavXml navXml = new NavXml();
             if (contact == null)
@@ -253,7 +253,7 @@ namespace NAVAccess
                 contact.Profiles = new List<Profile>();
             }
 
-            string xmlRequest = navXml.ContactUpdateRequestXML(contact, accountId);
+            string xmlRequest = navXml.ContactUpdateRequestXML(contact, contact.MemberAccountID);
             string xmlResponse = RunOperation(xmlRequest);
             HandleResponseCode(ref xmlResponse);
             return;

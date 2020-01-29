@@ -172,7 +172,7 @@ export default {
       me.contact = userData.getUserData()
       if (me.contact == null) { return }
       // todo: combine in one requrest in nav
-      contactService.notificationsGetByContactId(me.contact.id).then((notifications) => {
+      contactService.notificationsGetByContactId(me.contact.account.id).then((notifications) => {
         var readedNotinfications = []
         _.each(notifications, n => {
           readedNotinfications.push(n.code)
