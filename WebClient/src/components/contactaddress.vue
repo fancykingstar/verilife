@@ -225,7 +225,10 @@ export default {
         LastName: me.contact.lastName,
         Phone: me.contact.phone,
         Id: me.contact.id,
-        birthDay: me.contact.birthDay
+        birthDay: me.contact.birthDay,
+        MemberAccountID: me.contact.account.id,
+        ClubID: me.contact.account.scheme.club.id,
+        SchemeID: me.contact.account.scheme.id
       }
       updatedContact.Addresses = []
       updatedContact.Addresses.push(me.addressForm)
@@ -240,7 +243,7 @@ export default {
           })
           return
         }
-        contactService.contactGetByCardId(me.contact.id).then((contact) => {
+        contactService.contactGetByCardId(me.contact.account.id).then((contact) => {
           userData.setUserData(contact)
           me.$q.loading.hide()
           me.dialogOpen = false

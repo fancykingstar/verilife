@@ -26,7 +26,13 @@ namespace LSRetail.Omni.Domain.DataModel.Loyalty.Members
 
         #endregion
 
-        #region Properties
+        #region Properties 
+        [DataMember]
+        public string ClubID { get; set; }
+        [DataMember]
+        public string SchemeID { get; set; }
+        [DataMember]
+        public string MemberAccountID { get; set; }
         [DataMember]
         public string ExternalInfo { get; set; }
         [DataMember]

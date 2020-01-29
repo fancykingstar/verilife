@@ -10,7 +10,8 @@ const routes = [
       { path: 'history', component: () => import('pages/History.vue') },
       { path: 'notifications', component: () => import('pages/Notifications.vue') },
       { path: 'home', component: () => import('pages/home.vue') },
-      { path: 'collections', component: () => import('pages/Collections.vue') }
+      { path: 'collections', component: () => import('pages/Collections.vue') },
+      { path: 'stores', component: () => import('pages/Stores.vue') }
     ]
   },
   {

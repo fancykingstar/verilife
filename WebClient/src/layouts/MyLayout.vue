@@ -39,6 +39,20 @@
                 label="OFFERS"
                 exact
               /> -->
+               <q-route-tab class="i-route-tab" v-show="tab!=='stores'"
+                icon="img:statics/history-inactive.svg"
+                to="/dashboard/stores"
+                label="STORES"
+                exact
+                name="stores"
+              />
+              <q-route-tab class="i-route-tab" v-show="tab==='stores'"
+                icon="img:statics/history-active.svg"
+                to="/dashboard/stores"
+                label="STORES"
+                exact
+                name="stores"
+              />
               <q-route-tab class="i-route-tab" v-show="tab!=='history'"
                 icon="img:statics/history-inactive.svg"
                 to="/dashboard/history"
@@ -94,7 +108,7 @@
 
           <q-toolbar-title style="tex-align:center">
             <div class="i-tool-logo">
-              <img src="statics/den-logo-white.svg"/>
+              <img src="statics/veri-mainlogo.png"/>
             </div>
           </q-toolbar-title>
             <q-btn class="q-mr-sm" flat round dense icon="notifications_none" style="" @click="gotoNot">
@@ -111,7 +125,7 @@
     >
       <q-list>
         <q-item-label header>
-          <img class="i-drawer-logo" src="statics/den-logo-leaf.png"/>
+          <img class="i-drawer-logo" src="statics/veri-leaf.png"/>
         </q-item-label>
 
         <q-item clickable to="/dashboard/home">
@@ -123,16 +137,16 @@
           </q-item-section>
         </q-item>
 
-       <!--  <q-separator spaced class="i-drawer-separator" color="grey-4"/>
+       <q-separator spaced class="i-drawer-separator" color="grey-4"/>
 
-        <q-item clickable to="/dashboard/offers">
+        <q-item clickable to="/dashboard/stores">
           <q-item-section avatar>
            <img class="q-ml-md" src="statics/icon-offers.svg"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label class="i-menu-text">Offers</q-item-label>
+            <q-item-label class="i-menu-text">Stores</q-item-label>
           </q-item-section>
-        </q-item> -->
+        </q-item>
 
         <q-separator spaced class="i-drawer-separator" color="grey-4"/>
 
@@ -280,12 +294,12 @@ export default {
     justify-content: center;
 }
 .i-tool-logo img {
-  height:60px;
+  height:40px;
 }
 .q-header {
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
-  background:  black;
+  background:  #3b3b3b;
   color: white;
 }
 .q-footer .q-tab--full{

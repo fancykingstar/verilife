@@ -317,6 +317,14 @@ namespace LSOmni.DataAccess.BOConnection.NavSQL.XmlMapping.Loyalty
             METRCTHCAllowance.InnerText = "0";
             requestBody.AppendChild(METRCTHCAllowance);
 
+            XmlElement ClubID = document.CreateElement("ClubID");
+            ClubID.InnerText = contact.ClubID;
+            requestBody.AppendChild(ClubID);
+
+            XmlElement SchemeID = document.CreateElement("SchemeID");
+            SchemeID.InnerText = contact.SchemeID;
+            requestBody.AppendChild(SchemeID);
+
             return document.OuterXml;
         }
 
@@ -453,7 +461,7 @@ namespace LSOmni.DataAccess.BOConnection.NavSQL.XmlMapping.Loyalty
             requestBody.AppendChild(schemeIDElement);
 
             XmlElement accountIDElement = document.CreateElement("AccountID");
-            accountIDElement.InnerText = contact.Account?.Id;
+            accountIDElement.InnerText = ""; //contact.Id;
             requestBody.AppendChild(accountIDElement);
 
             XmlElement contactIDElement = document.CreateElement("ContactID");
@@ -479,6 +487,66 @@ namespace LSOmni.DataAccess.BOConnection.NavSQL.XmlMapping.Loyalty
             XmlElement dobElement = document.CreateElement("DateOfBirth");
             dobElement.InnerText = ToNAVDate(contact.BirthDay);
             requestBody.AppendChild(dobElement);
+
+            XmlElement DrivingLicenseID = document.CreateElement("DrivingLicenseID");
+            DrivingLicenseID.InnerText = "";
+            requestBody.AppendChild(DrivingLicenseID);
+
+            XmlElement StateID = document.CreateElement("StateID");
+            StateID.InnerText = "";
+            requestBody.AppendChild(StateID);
+
+
+            XmlElement PrescriptionID = document.CreateElement("PrescriptionID");
+            PrescriptionID.InnerText = "";
+            requestBody.AppendChild(PrescriptionID);
+
+            XmlElement DemoMemberAllowance = document.CreateElement("DemoMemberAllowance");
+            DemoMemberAllowance.InnerText = "0";
+            requestBody.AppendChild(DemoMemberAllowance);
+
+            XmlElement DoctorRecomendationExpDate = document.CreateElement("DoctorRecomendationExpDate");
+            DoctorRecomendationExpDate.InnerText = "01/01/1900"; // ToNAVDate(DateTime.Now.AddMonths(+1));
+            requestBody.AppendChild(DoctorRecomendationExpDate);
+
+            XmlElement DLExpiryDate = document.CreateElement("DLExpiryDate");
+            DLExpiryDate.InnerText = "01/01/1900"; //ToNAVDate(DateTime.Now.AddMonths(+1));
+            requestBody.AppendChild(DLExpiryDate);
+
+            XmlElement DoctorRecomendationNo = document.CreateElement("DoctorRecomendationNo");
+            DoctorRecomendationNo.InnerText = "";
+            requestBody.AppendChild(DoctorRecomendationNo);
+
+            XmlElement DoctorID = document.CreateElement("DoctorID");
+            DoctorID.InnerText = "";
+            requestBody.AppendChild(DoctorID);
+
+            XmlElement PatientID = document.CreateElement("PatientID");
+            PatientID.InnerText = "";
+            requestBody.AppendChild(PatientID);
+
+            XmlElement PatientIDExpDate = document.CreateElement("PatientIDExpDate");
+            PatientIDExpDate.InnerText = "01/01/1900"; //ToNAVDate(DateTime.Now.AddMonths(+1));
+            requestBody.AppendChild(PatientIDExpDate);
+
+            XmlElement CaregiverID = document.CreateElement("CaregiverID");
+            CaregiverID.InnerText = "";
+            requestBody.AppendChild(CaregiverID);
+
+            XmlElement CaregiverName = document.CreateElement("CaregiverName");
+            CaregiverName.InnerText = "";
+            requestBody.AppendChild(CaregiverName);
+
+
+            XmlElement METRCFlowerAllowance = document.CreateElement("METRCFlowerAllowance");
+            METRCFlowerAllowance.InnerText = "0";
+            requestBody.AppendChild(METRCFlowerAllowance);
+
+
+            XmlElement METRCTHCAllowance = document.CreateElement("METRCTHCAllowance");
+            METRCTHCAllowance.InnerText = "0";
+            requestBody.AppendChild(METRCTHCAllowance);
+
 
             return document.OuterXml;
         }

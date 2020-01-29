@@ -8,7 +8,8 @@ module.exports = function (ctx) {
     boot: [
       'axios',
       'vuelidate',
-      'smoothscroll'
+      'smoothscroll',
+      'google'
     ],
 
     css: [
@@ -98,11 +99,12 @@ module.exports = function (ctx) {
       env: ctx.dev
         ? { // dev
           API: JSON.stringify('http://localhost:49424/api')
+          // API: JSON.stringify('https://verilifeapi.tenging.is/api')
           // API: JSON.stringify('http://invictaapilive.tenging.is/api')
         } : { // production
           // API: JSON.stringify('http://inapi.tenging.is/api')
           // API: JSON.stringify('http://invictaapilive.tenging.is/api')
-          API: JSON.stringify('http://denapi.tenging.is/api')
+          API: JSON.stringify('https://verilifeapi.tenging.is/api')
         },
       distDir: '../staticserver/wwwroot',
       scopeHoisting: true,

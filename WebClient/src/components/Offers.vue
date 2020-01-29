@@ -125,7 +125,7 @@ export default {
         me.$router.push('/')
       }
       console.log(me.contact)
-      contactService.publishedOffersGet(me.contact.id, me.contact.externalInfo.companyName).then((offers) => {
+      contactService.publishedOffersGet(me.contact.account.id, me.contact.externalInfo.companyName).then((offers) => {
         me.json = offers
         me.offers = offers
       }, (error) => {
@@ -142,12 +142,15 @@ export default {
     openOffer (offer) {
       var me = this
       console.log(offer)
+      me.$q.loading.show()
       me.selectedOffer = offer
-      me.offerDialog = true
       contactService.getOfferHtml(offer.id).then((html) => {
+        me.offerDialog = true
         me.html = html
       }, (error) => {
         console.error(error.message)
+      }).then(() => {
+        me.$q.loading.hide()
       })
     }
   }

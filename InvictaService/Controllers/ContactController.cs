@@ -104,8 +104,8 @@ namespace InvictaService.Controllers
         public MemberContact ContactGetByCardIdV2(string CardID)
         {
             CheckAccess(CardID);
-            var ret = _retailWebService.ContactGetByCardId("C000000004");
-            ret.ExternalInfo = _JSONWebService.GetJSON("GetContactExtInfo", "{accountNo: '" + "MA00000001" + "'}");
+            var ret = _retailWebService.ContactGetByCardId(CardID);
+            ret.ExternalInfo = _JSONWebService.GetJSON("GetContactExtInfo", "{accountNo: '" + CardID + "'}");
             return ret;
         }
 
@@ -114,9 +114,9 @@ namespace InvictaService.Controllers
         [Route("api/[controller]/PublishedOffersGet")]
         public List<PublishedOffer> PublishedOffersGet(string CardID, string Company)
         {
-            // CheckAccess(CardID);
-            // SetServicesUrlCompany(Company);
-            var ret = _retailWebService.PublishedOffersGet("C000000004", "", "");
+            CheckAccess(CardID);
+            SetServicesUrlCompany(Company);
+            var ret = _retailWebService.PublishedOffersGet(CardID, "", "");
             return ret;
         }
 
@@ -127,13 +127,13 @@ namespace InvictaService.Controllers
         public string ContactUpdate([FromBody]MemberContact MemberContact)
         {
             // CheckAccess(MemberContact.Id);
-            string regInfo = "{'id': '" + MemberContact.Id + "', 'email' : '" + MemberContact.Email + "'}";
+            string regInfo = "{'id': '" + MemberContact.MemberAccountID + "', 'email' : '" + MemberContact.Email + "'}";
             string ret = _JSONWebService.GetJSON("LyaltyEmailUpdate", regInfo);
             if (ret != "success")
             {
                 return ret;
             }
-            _retailWebService.ContactUpdate(MemberContact, "MA00000001");
+            _retailWebService.ContactUpdate(MemberContact);
             return "success";
         }
 
@@ -292,7 +292,7 @@ namespace InvictaService.Controllers
                 response = Ok(new
                 {
                     token = tokenString,
-                    accountID= accountID.Replace("MA", "MC")
+                    accountID= accountID
                 });
             }
             return response;
@@ -309,7 +309,7 @@ namespace InvictaService.Controllers
                 MailService ms = new MailService(_configuration);
                 var dir = _configuration["MailTemplate:dir"];
                 string template = System.IO.File.ReadAllText(dir + "\\reset.html");
-                string link = "http://invictaloyalty.com//#/" + ret;
+                string link = "https://verilife.tenging.is/#/" + ret;
                 string replaced = template.Replace("{link}", link);
                 ms.SendEmail(Email, "Password Reset", replaced);
             }
@@ -332,7 +332,7 @@ namespace InvictaService.Controllers
         public string NotificationsGetByContactId(string ContactID)
         {
             //CheckAccess(ContactID);
-            var ret = _JSONWebService.GetJSON("GetMemberNotifications", "MA00000001");
+            var ret = _JSONWebService.GetJSON("GetMemberNotifications", ContactID);
             return ret;
         }
 
@@ -386,7 +386,7 @@ namespace InvictaService.Controllers
                 "', TransactionNo : '" + TransactionNo + "', PrintMethod : 'GetPDF', MailRecipient : ''}";
             var ret = _JSONWebService.GetJSON("GetDigitalReceipt", param);
             var bytes = Convert.FromBase64String(ret);
-            return File(bytes, "application/pdf", "Den-Receipt-" + TransactionNo + ".pdf");
+            return File(bytes, "application/pdf", "Receipt-" + TransactionNo + ".pdf");
 
         }
         [HttpGet]
@@ -409,6 +409,14 @@ namespace InvictaService.Controllers
             var ret = _JSONWebService.GetJSON("GetFeaturedWatch", "");
             return ret;
 
+        }
+
+        [HttpGet]
+        [Route("api/[controller]/GetLocations")]
+        public string GetLocations()
+        {
+            var ret = _JSONWebService.GetJSON("GetLocations", "");
+            return ret;
         }
 
         [HttpGet]

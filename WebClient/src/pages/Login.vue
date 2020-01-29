@@ -1,14 +1,13 @@
 <template>
   <q-page class="flex row i-page" style="justify-content: center;" v-if="contact === null">
 <div style="display:flex;flex-direction:column">
-    <div class="i-login-view" style="height: 80%">
+    <div class="i-login-view" style="height: 100%">
 
 <transition
   appear
   enter-active-class="animated slideInRight"
 >
       <div class="i-login-content"  v-show="currentView === 'login'">
-          <span class="i-elite q-pb-lg">THE DEN LOYALTY MEMBER</span>
         <span class="i-login-input-title"> E-MAIL </span>
         <q-input outlined stack-label square color="grey" bg-color="white" :error="$v.loginForm.email.$error"
            v-model="loginForm.email" class="" type="email" v-on:keyup.enter="loginClicked"/>
@@ -17,8 +16,8 @@
            v-model="loginForm.pass" class="" type="password" v-on:keyup.enter="loginClicked"/>
         <div class="i-content-text-forgot" @click="forgotPassword">Forgot password?</div>
 
-        <div @click="loginClicked" class="i-btn q-mt-lg">SIGN IN</div>
-         <div @click="signupClicked" class="i-btn i-singup q-mt-sm">SIGN UP</div>
+        <div @click="loginClicked" class="i-btn i-singup q-mt-lg">SIGN IN</div>
+         <div @click="signupClicked" class="i-btn i-singup-2 q-mt-sm">SIGN UP</div>
       </div>
 </transition>
 <transition
@@ -40,9 +39,6 @@
       </div>
 
     </div>
-      <div class="row justify-start">
-        <img style="width:220px;height:auto" src="statics/den-name.svg"/>
-      </div>
 
  </div>
   </q-page>
@@ -75,8 +71,8 @@ color: #C7C8CA;
 
 .i-page {
   font-family: Arimo;
-  background-color: #333333;
-  background-image:    url("/statics/CBD_Logo_TheDen_Green.png");
+  background-color: #000000;
+  background-image:    url("/statics/veri-logo.png");
   background-size:     auto 90%;
   background-repeat:   no-repeat;
   background-position: right 0px center;
@@ -97,12 +93,18 @@ color: #C7C8CA;
   align-items: center;
   text-align: center;
   color: #58595B;
-  background: #40B149;
+  background: #dadada;
   box-sizing: border-box;
 }
 .i-singup{
   margin-top:30px;
-  background: #C7C8CA;
+  background: #dadada;
+}
+.i-singup-2{
+  margin-top:30px;
+  background: black;
+  border:3px solid #dadada;
+  color:#dadada;
 }
 .i-login-view{
   display: flex;
@@ -137,7 +139,7 @@ color: #C7C8CA;
   font-size:12px;
   text-decoration: underline;
   cursor: pointer;
-  color: #40B149;
+  color: white;
 }
 .i-content-text-reg{
   font-size:14px;

@@ -87,7 +87,7 @@
               :content-style="contentStyle"
               :content-active-style="contentActiveStyle">
                 <div class="i-pop-body">
-                  <img src="statics/den-logo-black.png">
+                  <img src="statics/veri-logo-black.png">
                   <div style="font-family:Merch" v-for="(line, idx3) in receiptLines" :key="'r-' + idx3">
                     <span v-if="line.fontType === 0" v-html="line.lineText"></span>
                     <span style="font-weight:bold" v-if="line.fontType !== 0" v-html="line.lineText"></span>
@@ -327,7 +327,7 @@ export default {
       var me = this
       var contact = userData.getUserData()
       if (contact) {
-        contactService.contactGetByCardId(contact.id).then((rcontact) => {
+        contactService.contactGetByCardId(contact.account.id).then((rcontact) => {
           me.getRefundList(rcontact, function (filledContact) {
             me.contact = filledContact
             done()
