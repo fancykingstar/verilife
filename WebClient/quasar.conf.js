@@ -98,7 +98,7 @@ module.exports = function (ctx) {
     build: {
       env: ctx.dev
         ? { // dev
-          API: JSON.stringify('http://localhost:49424/api')
+          API: JSON.stringify('http://localhost:49425/api')
           // API: JSON.stringify('https://verilifeapi.tenging.is/api')
           // API: JSON.stringify('http://invictaapilive.tenging.is/api')
         } : { // production

@@ -5,8 +5,6 @@
       color="black"
     >
     <div class="i-history-title">Stores</div>
-    <!-- GmapMap ref="mapRef" :center="{lat: 1.38, lng: 103.8}" :zoom="12" class="map-container">
-          </GmapMap> -->
     <div>
         <q-tabs
           v-model="tab"
@@ -17,11 +15,24 @@
           align="right"
           narrow-indicator
         >
+          <q-tab name="map" label="Map" />
           <q-tab name="list" label="List" />
          <!-- <q-tab name="receipt" label="Receipt list" /> -->
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="map">
+            <GmapMap ref="mapRef" :center="{lat: 1.38, lng: 103.8}" :zoom="2" class="map-container" style="width: 100%">
+              <GmapMarker
+                :key="index"
+                v-for="(m, index) in locations"
+                :position="{ lat: m.latitude, lng: m.longitude }"
+                :clickable="true"
+                :draggable="true"
+                @click="center={ lat: m.latitude, lng: m.longitude }"
+              />
+            </GmapMap>
+          </q-tab-panel>
           <q-tab-panel name="list">
               <div class="i-history-transactions"  v-for="(location, idx) in locations" :key="idx">
                 <div class="i-history-item">
@@ -34,11 +45,6 @@
                     </div>
                   </div>
             </div>
-          </q-tab-panel>
-
-          <q-tab-panel name="receipt">
-          <!-- <GmapMap ref="mapRef">
-          </GmapMap> -->
           </q-tab-panel>
         </q-tab-panels>
 
@@ -230,7 +236,7 @@ export default {
   data () {
     return {
       locations: [],
-      tab: 'list'
+      tab: 'map'
     }
   },
   mounted () {
@@ -238,10 +244,15 @@ export default {
     // its map has not been initialized.
     // Therefore we need to write mapRef.$mapPromise.then(() => ...)
 
-    this.$refs.mapRef.$mapPromise.then((map) => {
-      map.panTo({
-        lat: 1.38,
-        lng: 103.80 })
+    var me = this
+    contactService.getLocations().then((locations) => {
+      me.locations = locations
+      me.$refs.mapRef.$mapPromise.then((map) => {
+        map.panTo({
+          lat: locations[0].latitude,
+          lng: locations[0].longitude
+        })
+      })
     })
   },
   computed: {
@@ -267,15 +278,12 @@ export default {
     var me = this
     contactService.getLocations().then((locations) => {
       me.locations = locations
-      console.log(locations)
-      /*
-       me.$refs.mapRef.$mapPromise.then((map) => {
+      me.$refs.mapRef.$mapPromise.then((map) => {
         map.panTo({
-          lat: 1.38,
-          lng: 103.80
+          lat: locations[0].latitude,
+          lng: locations[0].longitude
         })
       })
-      */
     })
   },
   methods: {
