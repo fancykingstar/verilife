@@ -36,9 +36,9 @@
                     <div class="i-history-body">
                       <div class="i-history-body-date">{{transaction.date}}</div>
                       <div class="i-history-body-name">{{sale.item.description}}</div>
-                      <div class="i-history-body-price"> $ {{thousandsSeparators(sale.netAmt + sale.discountAmt)}}</div>
                       <div class="i-history-body-refund" v-if="sale.refund">REFUNDED</div>
                     </div>
+                    <div class="i-history-body-price"> $ {{thousandsSeparators(sale.netAmt + sale.discountAmt)}}</div>
                   </div>
               </div>
             </div>
@@ -201,10 +201,10 @@ font-size:15px;
   border-top: 1px solid #58595B;
 }
 .i-history-img{
-  width:30%;
   justify-content: center;
-    width: 30%;
-    display: flex;
+  width: 136px;
+  height: 136px;
+  display: flex;
 }
 
 .i-history-body{
@@ -225,16 +225,27 @@ font-size:15px;
   flex-direction: row;
 }
 .i-history-body-date{
-  color:#7d7d7d;
+  color:#cccccc;
+  font-family: Museo Sans;
 }
 .i-history-body-name{
   color:#58595B;
-  font-family: Din;
+  font-family: Gotham;
   font-weight: bold;
   font-size: 18px;
 }
-.i-history-body-price{
-   color:#7d7d7d;
+.i-history-body-price {
+  color:#7d7d7d;
+  font-family: Museo;
+  font-size: 24px;
+  flex: 1;
+  text-align: right;
+}
+
+.i-history-body .i-history-body-price {
+  font-family: Din;
+  font-size: 14px;
+  text-align: left;
 }
 
 @media only screen and (max-width: 400px) {

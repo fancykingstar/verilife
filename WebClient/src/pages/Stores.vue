@@ -1,12 +1,10 @@
 <template>
-  <div class="i-history-container">
+  <div class="i-history-container stores">
      <q-pull-to-refresh
       @refresh="refresh"
       color="black"
     >
     <div class="i-history-title">Locations</div>
-    <!-- GmapMap ref="mapRef" :center="{lat: 1.38, lng: 103.8}" :zoom="12" class="map-container">
-          </GmapMap> -->
     <div>
         <q-tabs
           v-model="tab"
@@ -17,28 +15,42 @@
           align="right"
           narrow-indicator
         >
+          <q-tab name="map" label="Map" />
           <q-tab name="list" label="List" />
          <!-- <q-tab name="receipt" label="Receipt list" /> -->
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="map">
+            <GmapMap ref="mapRef" :center="{lat: 1.38, lng: 103.8}" :zoom="2" class="map-container" style="width: 100%">
+              <GmapMarker
+                :key="index"
+                v-for="(m, index) in locations"
+                :position="{ lat: m.latitude, lng: m.longitude }"
+                :clickable="true"
+                :draggable="true"
+                @click="center={ lat: m.latitude, lng: m.longitude }"
+              />
+            </GmapMap>
+          </q-tab-panel>
           <q-tab-panel name="list">
               <div class="i-history-transactions"  v-for="(location, idx) in locations" :key="idx">
                 <div class="i-history-item">
                     <div class="i-history-body">
-                      <div class="i-history-body-name">{{location.storeName}}</div>
-                      <div class="i-history-body-price">{{location.postCode}} {{location.county}} {{location.address}} </div>
-                      <div class="i-history-body-price">{{location.address2}} </div>
-                      <div class="i-history-body-price">  <q-icon name="phone" /> {{location.storePhone}} </div>
-                      <div class="i-history-body-price">  <q-icon name="mail" /> {{location.storeEmail}} </div>
+                        <div class="i-history-body-name">{{location.storeName}}</div>
+                      <div class="store-list">
+                      <div>
+                        <div class="i-history-body-price">{{location.postCode}} {{location.county}} {{location.address}} </div>
+                        <div class="i-history-body-price">{{location.address2}} </div>
+                      </div>
+                      <div>
+                        <div class="i-history-body-price">  <q-icon name="phone" /> {{location.storePhone}} </div>
+                        <div class="i-history-body-price">  <q-icon name="mail" /> {{location.storeEmail}} </div>
+                      </div>
+                      </div>
                     </div>
                   </div>
             </div>
-          </q-tab-panel>
-
-          <q-tab-panel name="receipt">
-          <!-- <GmapMap ref="mapRef">
-          </GmapMap> -->
           </q-tab-panel>
         </q-tab-panels>
 
@@ -134,7 +146,7 @@ font-size:15px;
   padding-right:10%;
 }
 
-.i-history-title{
+.stores .i-history-title{
   text-align: center;
   padding: 10px;
   font-size: 20px;
@@ -143,11 +155,11 @@ font-size:15px;
   font-weight: bold;
   text-transform: uppercase;
 }
-.i-history-item{
+.stores .i-history-item{
   padding: 10px;
   display: flex;
   flex-direction: row;
-  border-top: 1px solid #58595B;
+  border-top: 1px solid #cccccc;
 }
 .i-history-img{
   width:30%;
@@ -156,10 +168,23 @@ font-size:15px;
     display: flex;
 }
 
-.i-history-body{
+.stores .i-history-body{
+  display:flex;
+  padding-left:10px;
+  flex-direction: column;
+  flex: 1;
+}
+
+.store-list{
+  display:flex;
+  flex: 1;
+}
+
+.store-list > div {
   display:flex;
   flex-direction: column;
   padding-left:10px;
+  flex: 1;
 }
 
 .t-h-img{
@@ -184,6 +209,16 @@ font-size:15px;
 }
 .i-history-body-price{
    color:#7d7d7d;
+}
+
+.store-list .i-history-body-price i {
+  color: #cccccc;
+}
+
+@media only screen and (max-width: 991px) {
+  .store-list {
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -230,7 +265,7 @@ export default {
   data () {
     return {
       locations: [],
-      tab: 'list'
+      tab: 'map'
     }
   },
   mounted () {
@@ -238,10 +273,15 @@ export default {
     // its map has not been initialized.
     // Therefore we need to write mapRef.$mapPromise.then(() => ...)
 
-    this.$refs.mapRef.$mapPromise.then((map) => {
-      map.panTo({
-        lat: 1.38,
-        lng: 103.80 })
+    var me = this
+    contactService.getLocations().then((locations) => {
+      me.locations = locations
+      me.$refs.mapRef.$mapPromise.then((map) => {
+        map.panTo({
+          lat: locations[0].latitude,
+          lng: locations[0].longitude
+        })
+      })
     })
   },
   computed: {
@@ -267,15 +307,12 @@ export default {
     var me = this
     contactService.getLocations().then((locations) => {
       me.locations = locations
-      console.log(locations)
-      /*
-       me.$refs.mapRef.$mapPromise.then((map) => {
+      me.$refs.mapRef.$mapPromise.then((map) => {
         map.panTo({
-          lat: 1.38,
-          lng: 103.80
+          lat: locations[0].latitude,
+          lng: locations[0].longitude
         })
       })
-      */
     })
   },
   methods: {

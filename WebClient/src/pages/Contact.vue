@@ -42,6 +42,13 @@
               </template>
             </q-input>
 
+            <div class="i-contact-line" v-if="disabled === false">
+              <div class="i-contact-line-left"></div>
+              <div  class="i-contact-line-right">
+                <!-- <div @click="addressDialogOpen = true" class="i-btn-change">CHANGE ADDRESS</div> -->
+                <a @click="passDialog = true" class="i-btn-change">CHANGE PASSWORD</a>
+              </div>
+            </div>
             <div @click="contactUpdate" class="i-btn-contact">SAVE INFO</div>
 
           </q-tab-panel>
@@ -75,15 +82,6 @@
 
           </q-tab-panel>
           </q-tab-panels>
-
-      <div class="i-contact-line" v-if="disabled === false">
-        <div class="i-contact-line-left"></div>
-        <div  class="i-contact-line-right">
-          <!-- <div @click="addressDialogOpen = true" class="i-btn-change">CHANGE ADDRESS</div> -->
-          <div @click="passDialog = true" class="i-btn-change">CHANGE PASSWORD</div>
-
-       </div>
-      </div>
        <div class="i-contact-line">
       <div class="i-sing-out" @click="logout">Sign Out</div>
       </div>
@@ -121,7 +119,7 @@
   overflow: hidden;
 }
 .i-change-input-title{
-  font-family: Arimo;
+  font-family: Gotham;
   font-style: normal;
   font-weight: normal;
   line-height: 14px;
@@ -186,12 +184,16 @@
 }
 .i-contact-container .q-field--with-bottom{
   padding-bottom: 0px!important;
+  font-family: Gotham;
+  font-size: 12px;
+}
+.i-contact-container .q-field--with-bottom i{
+  color: #cccccc;
 }
 .i-btn-change {
   display: flex;
   justify-content: center;
   padding: 5px;
-  background-color: #C7C8CA;
   text-transform: uppercase;
   font-size: 20px;
   line-height: 30px;
@@ -216,6 +218,9 @@
   cursor: pointer;
   font-family: Din;
   margin-top: 20px;
+  font-family: "Museo Sans";
+  font-size: 14px;
+  font-weight: 700;
 }
 .i-sing-out{
   font-family: Din;

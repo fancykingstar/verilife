@@ -31,9 +31,9 @@
         </div>
         <div class="i-balance-right">
           <div class="i-balance-container">
-            <div class="i-balance-container-title-top">Member since {{createdDate}}</div>
-             <div class="i-balance-container-point" v-if="contact.account">{{contact.account.pointBalance}}</div>
-              <div class="i-balance-container-title-bottom"><span>Points</span></div>
+            <div class="i-balance-container-title-top">Member since <br />{{createdDate}}</div>
+            <div class="i-balance-container-title-bottom"><span>point balance</span></div>
+            <div class="i-balance-container-point" v-if="contact.account">{{contact.account.pointBalance}}</div>
           </div>
         </div>
       </div>
@@ -52,7 +52,6 @@
   </div>
   <div id="prom-id"></div>
   <div v-if="featuredWatch && featuredWatch.description" >
-    <div class="i-home-separator" ></div>
     <div class="i-home-container i-padding-none" >
       <div class="i-home-body i-bottom">
 
@@ -66,17 +65,15 @@
       </div>
     </div>
   </div>
-   <div class="i-home-separator"></div>
    <div class="i-home-container i-bottom">
     <div class="i-home-body i-bottom">
-      <div class="i-home-offer-title"><span>Promotions</span></div>
+      <div class="i-home-offer-title"><h2>Promotions</h2></div>
 
        <div class="i-offer-row">
         <offers ref="off"></offers>
       </div>
     </div>
   </div>
-  <div class="i-home-separator"></div>
   </q-pull-to-refresh>
 </div>
 </template>
@@ -91,6 +88,7 @@
 .i-home-arrow-down .q-btn--outline {
     border: 3px solid currentColor!important;
     font-size: 15px;
+    opacity: 0.5;
 }
 .i-home-arrow-down{
   display: flex;
@@ -102,20 +100,21 @@
     justify-content: center;
     padding: 10px 0px;
 }
-.i-home-offer-title span{
+.i-home-offer-title h2{
   text-transform: uppercase;
   color:black;
-  font-size: 18px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  padding: 5px 0px;
+  font-family: Gotham;
+  font-size: 24px;
+  font-weight: bold;
 }
 .i-home-container.i-top {
    padding-bottom:20px;
 }
 .i-home-container.i-bottom {
-   background-image: none;
    padding-bottom: 15px;
+   background-color: #e4e4e4;
 }
 .i-home-separator{
   height:30px;
@@ -123,7 +122,7 @@ background-image: linear-gradient(135deg, #000000 40%, #575757 40%, #575757 50%,
 background-size: 14.14px 14.14px;
 }
 .i-home-container{
-background:black;
+background:#000000;
   background-repeat:   no-repeat;
   background-position: center center;
 }
@@ -145,24 +144,29 @@ background:black;
   margin-bottom: 3px;
   color:white;
   text-shadow: 7px 7px 6px rgba(0,0,0,0.5);
+  border-bottom: 8px solid #58595b;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .i-balance-container-title-bottom{
   text-transform: uppercase;
   color:white;
-  font-size: 13px;
-      padding-top: 3px;
+  font-size: 18px;
+  font-family: Gotham;
+  font-weight: 100;
+  border-bottom:8px solid #58595b;
+  padding: 5px 0;
 }
 .i-balance-container-title-top{
   text-transform: uppercase;
   color:white;
   font-size: 13px;
-  border-top: 3px solid #58595b;
-  border-bottom: 3px solid #58595b;
-  padding: 5px 0px;
+  border-bottom: 8px solid #58595b;
+  padding: 10px 0px;
+  font-family: "Museo Sans";
+  font-weight: 100;
 }
 .i-balance-container-title-bottom span{
-  border-top:3px solid #58595b;
-  padding: 3px 0px;
 }
 .i-balance-container{
   text-align: center;
@@ -233,6 +237,9 @@ background:black;
   width:60%;
   font-family: Din;
   font-weight: bold;
+}
+.i-home-body.i-bottom {
+  width: 100%;
 }
 .i-qr-box{
   padding:5px;
