@@ -4,7 +4,7 @@
       @refresh="refresh"
       color="black"
     >
-    <div class="i-history-title">Stores</div>
+    <div class="i-history-title">Locations</div>
     <!-- GmapMap ref="mapRef" :center="{lat: 1.38, lng: 103.8}" :zoom="12" class="map-container">
           </GmapMap> -->
     <div>
@@ -280,7 +280,11 @@ export default {
   },
   methods: {
     refresh (done) {
-      done()
+      var me = this
+      contactService.getLocations().then((locations) => {
+        me.locations = locations
+        done()
+      })
     }
   }
 }
