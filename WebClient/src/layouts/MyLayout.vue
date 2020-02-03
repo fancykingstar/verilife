@@ -130,7 +130,7 @@
 
         <q-item clickable to="/dashboard/home">
           <q-item-section avatar>
-            <img   class="q-ml-md" src="statics/home-active.svg"/>
+            <img class="q-ml-md" src="statics/home-24px.svg"/>
           </q-item-section>
           <q-item-section>
             <q-item-label class="i-menu-text">Home</q-item-label>
@@ -141,10 +141,10 @@
 
         <q-item clickable to="/dashboard/stores">
           <q-item-section avatar>
-           <img class="q-ml-md" src="statics/icon-offers.svg"/>
+           <img class="q-ml-md" src="statics/store_mall_directory-24px.svg"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label class="i-menu-text">Stores</q-item-label>
+            <q-item-label class="i-menu-text">Locations</q-item-label>
           </q-item-section>
         </q-item>
 
@@ -152,7 +152,7 @@
 
         <q-item clickable to="/dashboard/history">
           <q-item-section avatar>
-            <img  class="q-ml-md" src="statics/history-active.svg"/>
+            <img class="q-ml-md" src="statics/history-24px.svg"/>
           </q-item-section>
           <q-item-section>
             <q-item-label class="i-menu-text">History</q-item-label>
@@ -184,7 +184,7 @@
 
         <q-item clickable to="/dashboard/contact">
           <q-item-section avatar>
-           <img class="q-ml-md" src="statics/account-active.svg"/>
+           <img class="q-ml-md" src="statics/windows_user.svg" width='20'/>
           </q-item-section>
           <q-item-section>
             <q-item-label class="i-menu-text">Account</q-item-label>
