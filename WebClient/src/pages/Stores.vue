@@ -1,10 +1,10 @@
 <template>
-  <div class="i-history-container">
+  <div class="i-history-container stores">
      <q-pull-to-refresh
       @refresh="refresh"
       color="black"
     >
-    <div class="i-history-title">Stores</div>
+    <div class="i-history-title">Locations</div>
     <div>
         <q-tabs
           v-model="tab"
@@ -37,11 +37,17 @@
               <div class="i-history-transactions"  v-for="(location, idx) in locations" :key="idx">
                 <div class="i-history-item">
                     <div class="i-history-body">
-                      <div class="i-history-body-name">{{location.storeName}}</div>
-                      <div class="i-history-body-price">{{location.postCode}} {{location.county}} {{location.address}} </div>
-                      <div class="i-history-body-price">{{location.address2}} </div>
-                      <div class="i-history-body-price">  <q-icon name="phone" /> {{location.storePhone}} </div>
-                      <div class="i-history-body-price">  <q-icon name="mail" /> {{location.storeEmail}} </div>
+                        <div class="i-history-body-name">{{location.storeName}}</div>
+                      <div class="store-list">
+                      <div>
+                        <div class="i-history-body-price">{{location.postCode}} {{location.county}} {{location.address}} </div>
+                        <div class="i-history-body-price">{{location.address2}} </div>
+                      </div>
+                      <div>
+                        <div class="i-history-body-price">  <q-icon name="phone" /> {{location.storePhone}} </div>
+                        <div class="i-history-body-price">  <q-icon name="mail" /> {{location.storeEmail}} </div>
+                      </div>
+                      </div>
                     </div>
                   </div>
             </div>
@@ -140,7 +146,7 @@ font-size:15px;
   padding-right:10%;
 }
 
-.i-history-title{
+.stores .i-history-title{
   text-align: center;
   padding: 10px;
   font-size: 20px;
@@ -149,11 +155,11 @@ font-size:15px;
   font-weight: bold;
   text-transform: uppercase;
 }
-.i-history-item{
+.stores .i-history-item{
   padding: 10px;
   display: flex;
   flex-direction: row;
-  border-top: 1px solid #58595B;
+  border-top: 1px solid #cccccc;
 }
 .i-history-img{
   width:30%;
@@ -162,10 +168,23 @@ font-size:15px;
     display: flex;
 }
 
-.i-history-body{
+.stores .i-history-body{
+  display:flex;
+  padding-left:10px;
+  flex-direction: column;
+  flex: 1;
+}
+
+.store-list{
+  display:flex;
+  flex: 1;
+}
+
+.store-list > div {
   display:flex;
   flex-direction: column;
   padding-left:10px;
+  flex: 1;
 }
 
 .t-h-img{
@@ -190,6 +209,16 @@ font-size:15px;
 }
 .i-history-body-price{
    color:#7d7d7d;
+}
+
+.store-list .i-history-body-price i {
+  color: #cccccc;
+}
+
+@media only screen and (max-width: 991px) {
+  .store-list {
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (max-width: 400px) {
