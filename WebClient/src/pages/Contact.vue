@@ -14,7 +14,7 @@
         >
           <q-tab name="name" label="Personal info" />
           <q-tab name="address" label="Address" />
-          <q-tab name="medical" label="Patient" />
+          <q-tab name="medical" label="Medical" />
         </q-tabs>
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel class="i-tab-pane" name="name">
@@ -394,7 +394,7 @@ export default {
         })
         return
       }
-      contactService.contactChangePassword(me.contact.id, me.pssForm.oldPass, me.pssForm.pass).then((res) => {
+      contactService.contactChangePassword(me.contact.account.id, me.pssForm.oldPass, me.pssForm.pass).then((res) => {
         if (res !== 'success') {
           me.$q.notify({
             message: res,

@@ -144,7 +144,7 @@
            <img class="q-ml-md" src="statics/icon-offers.svg"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label class="i-menu-text">Stores</q-item-label>
+            <q-item-label class="i-menu-text">Locations</q-item-label>
           </q-item-section>
         </q-item>
 
