@@ -232,7 +232,7 @@ background:#000000;
 .i-name-row-right{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 10px;
 }
 .i-name-row-left{
   width:70%;
