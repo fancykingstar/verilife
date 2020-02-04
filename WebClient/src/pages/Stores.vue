@@ -265,7 +265,7 @@ export default {
   data () {
     return {
       locations: [],
-      tab: 'map'
+      tab: 'list'
     }
   },
   mounted () {

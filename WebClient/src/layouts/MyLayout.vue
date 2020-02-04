@@ -339,7 +339,9 @@ a.q-tab--active{
 .i-left-menu{
   background: #C4C4C4;
 }
-
+.i-left-menu .q-item.q-item-type.row.no-wrap.q-item--clickable.q-link.cursor-pointer.q-focusable.q-hoverable {
+  text-decoration: none;
+}
 .i-drawer-logo {
   width:auto;
 
