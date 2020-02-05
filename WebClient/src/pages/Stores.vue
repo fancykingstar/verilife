@@ -15,8 +15,8 @@
           align="right"
           narrow-indicator
         >
-          <q-tab name="map" label="Map" />
           <q-tab name="list" label="List" />
+          <q-tab name="map" label="Map" />
          <!-- <q-tab name="receipt" label="Receipt list" /> -->
         </q-tabs>
 
@@ -265,7 +265,7 @@ export default {
   data () {
     return {
       locations: [],
-      tab: 'map'
+      tab: 'list'
     }
   },
   mounted () {

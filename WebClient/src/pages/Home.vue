@@ -12,10 +12,14 @@
         <div class="i-name-row-left">
           <div class="i-home-name"> Welcome back</div>
           <div class="i-name-title">{{contact.name}}</div>
+            <div class="i-name-subtitle" style="color:#58595b">{{contact.id}} {{location}}</div>
             <div class="i-name-subtitle q-pt-sm">{{clubCode}} Member</div>
             <!-- <div v-if="schemeCode === '1'" class="i-name-subtitle q-pt-sm">Silver Member</div>
             <div v-if="schemeCode === '2'" class="i-name-subtitle q-pt-sm">Platinum Member</div> -->
+<<<<<<< HEAD
           <div class="i-name-subtitle" style="color:#58595b">{{contact.account.id}} {{location}}</div>
+=======
+>>>>>>> 3376c0910c1f0e7b2f4ad01691fa2ac62685f915
         </div>
         <div class="i-name-row-right">
           <div class="i-name-diamond"><img :src="getImageUrl(schemeCode)" />
@@ -27,7 +31,11 @@
 
       <div class="i-balance-row">
         <div class="i-balance-left">
+<<<<<<< HEAD
           <qrcode :value="contact.account.id" class="i-qr-box" :options="{ width: qrsize, margin: 1, displayValue: false }"></qrcode>
+=======
+          <qrcode :value="contact.id" class="i-qr-box" :options="{ width: 180, margin: 1, displayValue: false }"></qrcode>
+>>>>>>> 3376c0910c1f0e7b2f4ad01691fa2ac62685f915
         </div>
         <div class="i-balance-right">
           <div class="i-balance-container">
@@ -132,45 +140,49 @@ background:#000000;
 .i-home-name{
   padding: 10px;
   padding-left:0px;
-  font-size: 13px;
-    color: white;
+  font-size: 18px;
+  color: white;
   text-shadow: 7px 7px 6px rgba(0,0,0,0.5);
   text-transform: uppercase;
+
 }
 .i-balance-container-point{
-  font-size: 60px;
   font-weight: bold;
   line-height: 60px;
   margin-bottom: 3px;
   color:white;
   text-shadow: 7px 7px 6px rgba(0,0,0,0.5);
   border-bottom: 8px solid #58595b;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 80px;
 }
 .i-balance-container-title-bottom{
   text-transform: uppercase;
   color:white;
   font-size: 18px;
-  font-family: Gotham;
+  font-family: Museo Sans;
   font-weight: 100;
   border-bottom:8px solid #58595b;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 .i-balance-container-title-top{
   text-transform: uppercase;
   color:white;
-  font-size: 13px;
   border-bottom: 8px solid #58595b;
   padding: 10px 0px;
   font-family: "Museo Sans";
-  font-weight: 100;
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 0;
+  line-height: 1.6;
 }
 .i-balance-container-title-bottom span{
 }
 .i-balance-container{
   text-align: center;
   width: 170px;
+  margin-top: -20px;
 }
 .i-qr-box{
   align-self: center;
@@ -207,18 +219,28 @@ background:#000000;
     color: white;
   text-shadow: 7px 7px 6px rgba(0,0,0,0.5);
   font-size: 13px;
+  font-family: Museo Sans;
+  font-size: 14px;
+  font-weight: 500;
+}
+.i-name-subtitle.q-pt-sm {
+  font-family: Gotham;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 0
 }
 .i-name-title{
   color: white;
   text-shadow: 7px 7px 6px rgba(0,0,0,0.5);
-  font-size: 30px;
+  font-size: 36px;
   line-height: 100%;
   text-transform: uppercase;
+  margin-bottom: 15px;
 }
 .i-name-row-right{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 10px;
 }
 .i-name-row-left{
   width:70%;
