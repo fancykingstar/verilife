@@ -16,10 +16,6 @@
             <div class="i-name-subtitle q-pt-sm">{{clubCode}} Member</div>
             <!-- <div v-if="schemeCode === '1'" class="i-name-subtitle q-pt-sm">Silver Member</div>
             <div v-if="schemeCode === '2'" class="i-name-subtitle q-pt-sm">Platinum Member</div> -->
-<<<<<<< HEAD
-          <div class="i-name-subtitle" style="color:#58595b">{{contact.account.id}} {{location}}</div>
-=======
->>>>>>> 3376c0910c1f0e7b2f4ad01691fa2ac62685f915
         </div>
         <div class="i-name-row-right">
           <div class="i-name-diamond"><img :src="getImageUrl(schemeCode)" />
@@ -31,11 +27,7 @@
 
       <div class="i-balance-row">
         <div class="i-balance-left">
-<<<<<<< HEAD
-          <qrcode :value="contact.account.id" class="i-qr-box" :options="{ width: qrsize, margin: 1, displayValue: false }"></qrcode>
-=======
           <qrcode :value="contact.id" class="i-qr-box" :options="{ width: 180, margin: 1, displayValue: false }"></qrcode>
->>>>>>> 3376c0910c1f0e7b2f4ad01691fa2ac62685f915
         </div>
         <div class="i-balance-right">
           <div class="i-balance-container">
