@@ -7,8 +7,11 @@
       <q-resize-observer @resize="onResize" />
      <div class="i-watch-container" >
        <div class="i-watch-close">
-       <q-btn icon="close" flat round dense v-close-popup @click="$emit('close')" />
+        <q-btn icon="close" flat round dense v-close-popup @click="$emit('close')" />
        </div>
+       <h2 class="i-watch-container-name">
+            {{itemDetail.description}}
+        </h2>
         <div class="i-watch-item">
           <div class="i-watch-img">
             <!--<q-img v-if="item"
@@ -16,12 +19,12 @@
                 spinner-color="grey-5"
                 class="i-watch-grmoroi"
               />-->
+            <div class="i-watch-body-line-right category">
+              {{itemDetail.itemCategory}}
+            </div>
             <img v-if="item" class="t-watch-pic" :src="getItemImageUrl(item.id)"/>
           </div>
           <div class="i-watch-body" v-if="Object.keys(itemDetail).length !== 0">
-            <div class="i-watch-body-line q-mb-sm i-watch-body-line-title">
-               {{itemDetail.description}}
-            </div>
 <!--
     JObject.Add(JProperty.JProperty('description', StageItemAttributes."Extended Description"));
     JObject.Add(JProperty.JProperty('gender', StageItemAttributes.Gender));
@@ -49,75 +52,62 @@
 }
   -->
             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                No:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.no}}
+              <div class="i-watch-body-line-right category">
+               {{itemDetail.brand}}
               </div>
             </div>
             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Description
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.description}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Strain Code:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.strainCode}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Category
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.itemCatefory}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Product Group:
-              </div>
-              <div class="i-watch-body-line-right">
+              <div class="i-watch-body-line-right category">
                {{itemDetail.productGroup}}
               </div>
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
-                Unit Of Measure:
+                ALLOWANCE:
               </div>
               <div class="i-watch-body-line-right">
-               {{itemDetail.baseUnitOfMeasure}}
+              {{itemDetail.allowance}}
               </div>
             </div>
             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                THC:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.THC}}
+              <div class="i-watch-body-line-right description">
+               {{itemDetail.HTMLDescription}}
               </div>
             </div>
-             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                CBD:
+            <div class="i-watch-body-bottom">
+              <div class="i-watch-body-bottom-left">
+                <div class="i-watch-body-line">
+                  <div class="i-watch-body-line-left">
+                    THC:
+                  </div>
+                  <div class="i-watch-body-line-right">
+                  {{itemDetail.THC}}
+                  </div>
+                </div>
+                <div class="i-watch-body-line">
+                  <div class="i-watch-body-line-left">
+                    CBD:
+                  </div>
+                  <div class="i-watch-body-line-right">
+                  {{itemDetail.CBD}}
+                  </div>
+                </div>
+                <div class="i-watch-body-line">
+                  <div class="i-watch-body-line-left">
+                    CBN:
+                  </div>
+                  <div class="i-watch-body-line-right">
+                  {{itemDetail.CBN}}
+                  </div>
+                </div>
               </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.CBD}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                CBN:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.CBN}}
+              <div class="i-watch-body-bottom-right">
+                <div class="i-watch-body-bottom-price">
+                  <span>$</span>{{parseFloat(itemDetail.price).toFixed(2).split('.')[0]}}<sup>.{{parseFloat(itemDetail.price).toFixed(2).split('.')[1]}}</sup>
+                </div>
+                <div class="i-watch-body-bottom-strain">
+                  {{itemDetail.strain}}-STRAIN CODE
+                </div>
               </div>
             </div>
           </div>
@@ -141,7 +131,58 @@
 
 </template>
 
-<style>
+<style scoped>
+.i-watch-body-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.i-watch-body-bottom .i-watch-body-bottom-left {
+  padding-right: 10px;
+}
+
+.i-watch-body-bottom .i-watch-body-line {
+  padding-bottom: 0;
+  font-family: 'Museo Sans';
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+.i-watch-body-bottom-right {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+
+.i-watch-body-bottom-price {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Museo Sans';
+  color: #58595B;
+  text-align: right;
+}
+
+.i-watch-body-bottom-price span {
+  font-size: 20px;
+  margin-right: 5px;
+  vertical-align: bottom;
+  font-weight: 500;
+}
+
+.i-watch-body-bottom-price sup {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.i-watch-body-bottom-strain {
+  font-size: 10px;
+  font-family: 'Museo Sans';
+  color: #818181;
+  text-align: right;
+}
+
 .i-watch-pic{
 max-width: 300px;
     max-height: 300px;
@@ -153,6 +194,9 @@ max-width: 300px;
   flex-direction: row;
   justify-content: flex-end;
   padding:3px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .i-watch-container{
   display: flex;
@@ -160,12 +204,21 @@ max-width: 300px;
   border:10px solid #333333;
   background: white;
   max-width: 800px!important;
+  padding: 38px;
+  position: relative;
+}
+h2.i-watch-container-name {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: gotham;
+  text-align: center;
+  margin: 0;
+  line-height: 24px;
+  margin-bottom: 48px;
 }
 .i-watch-item{
   display: flex;
   flex-direction: row;
-  padding: 20px;
-  padding-top:0px;
 }
 .i-dialog{
   border:10px solid #333333;
@@ -174,35 +227,47 @@ max-width: 300px;
   padding-top:1px;
 }
 .i-watch-img{
-  width:50%;
-  justify-content: center;
+  flex: 1;
+  flex-direction: column;
   display: flex;
-  align-items: center;
+  padding-right: 20px;
+}
+.i-watch-img img {
+  width: 100%;
 }
 .i-watch-body{
   display:flex;
   flex-direction: column;
-  justify-content:center;
+  flex: 1;
 }
 .i-watch-body-line{
   display:flex;
   flex-direction: row;
-  padding-bottom:10px;
+  padding-bottom:16px;
 }
 .i-watch-body-line-left{
   display: flex;
   flex-direction: row;
-  width: 100%;
   padding-right: 10px;
-  justify-content: flex-end;
   color:#818181;
 }
 .i-watch-body-line-right{
   display: flex;
   flex-direction: row;
-  width: 80%;
   color:#58595B;
   font-weight: bold;
+}
+.i-watch-body-line-right.category{
+  width: 100%;
+  text-transform: uppercase;
+  color: #818181;
+  font-family: 'Museo Sans';
+  font-size: 14px;
+}
+.i-watch-body-line-right.description {
+  font-family: 'Museo Sans';
+  font-size: 14px;
+  padding-bottom: 48px;
 }
 .i-watch-body-line-title{
 font-weight: bold;
@@ -212,6 +277,15 @@ font-weight: bold;
     max-width: 100%;
   }
 @media only screen and (max-width: 600px) {
+  .i-watch-container {
+    padding: 30px;
+  }
+  .i-watch-body-bottom-price {
+    text-align: right;
+  }
+  .i-watch-close {
+    right: 0
+  }
  .i-watch-item{
    flex-direction:column;
  }
@@ -226,7 +300,7 @@ font-weight: bold;
    font-size:12px;
  }
  .i-watch-body-line{
-  padding-bottom:0px;
+  padding-bottom: 10px;
 }
 .i-watch-container{
    max-width: 100%!important;
