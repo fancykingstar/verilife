@@ -399,7 +399,6 @@ export default {
     openWatch (item) {
       var me = this
       // console.log(id)
-      console.log('00000000000000000000000', item)
       me.selectedWatch = item
       me.watchDialog = true
     },

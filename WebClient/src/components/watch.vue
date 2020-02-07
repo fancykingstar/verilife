@@ -6,6 +6,7 @@
       transition-hide="slide-down">
       <q-resize-observer @resize="onResize" />
      <div class="i-watch-container" >
+<<<<<<< HEAD
        <div class="i-watch-close">
         <q-btn icon="close" flat round dense v-close-popup @click="$emit('close')" />
        </div>
@@ -21,10 +22,23 @@
               />-->
             <div class="i-watch-body-line-right category">
               {{itemDetail.itemCategory}}
+=======
+      <h2 class="i-watch-title">{{itemDetail.description}}</h2>
+       <div class="i-watch-close">
+       <q-btn icon="close" flat round dense v-close-popup @click="$emit('close')" />
+       </div>
+        <div class="i-watch-item">
+          <div class="i-watch-img">
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-right">
+                {{itemDetail.itemCatefory}}
+              </div>
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
             </div>
             <img v-if="item" class="t-watch-pic" :src="getItemImageUrl(item.id)"/>
           </div>
           <div class="i-watch-body" v-if="Object.keys(itemDetail).length !== 0">
+<<<<<<< HEAD
 <!--
     JObject.Add(JProperty.JProperty('description', StageItemAttributes."Extended Description"));
     JObject.Add(JProperty.JProperty('gender', StageItemAttributes.Gender));
@@ -58,10 +72,20 @@
             </div>
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-right category">
+=======
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-right">
+               {{itemDetail.no}}
+              </div>
+            </div>
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-right">
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
                {{itemDetail.productGroup}}
               </div>
             </div>
             <div class="i-watch-body-line">
+<<<<<<< HEAD
               <div class="i-watch-body-line-left">
                 ALLOWANCE:
               </div>
@@ -108,6 +132,50 @@
                 <div class="i-watch-body-bottom-strain">
                   {{itemDetail.strain}}-STRAIN CODE
                 </div>
+=======
+              <div class="i-watch-body-line-right">
+               {{itemDetail.description}}
+              </div>
+            </div>
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-left">
+                Strain Code:
+              </div>
+              <div class="i-watch-body-line-right">
+               {{itemDetail.strainCode}}
+              </div>
+            </div>
+            <!--<div class="i-watch-body-line">
+              <div class="i-watch-body-line-left">
+                Unit Of Measure:
+              </div>
+              <div class="i-watch-body-line-right">
+               {{itemDetail.baseUnitOfMeasure}}
+              </div>
+            </div>-->
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-left">
+                THC:
+              </div>
+              <div class="i-watch-body-line-right">
+               {{itemDetail.THC}}
+              </div>
+            </div>
+             <div class="i-watch-body-line">
+              <div class="i-watch-body-line-left">
+                CBD:
+              </div>
+              <div class="i-watch-body-line-right">
+               {{itemDetail.CBD}}
+              </div>
+            </div>
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-left">
+                CBN:
+              </div>
+              <div class="i-watch-body-line-right">
+               {{itemDetail.CBN}}
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
               </div>
             </div>
           </div>
@@ -131,6 +199,7 @@
 
 </template>
 
+<<<<<<< HEAD
 <style scoped>
 .i-watch-body-bottom {
   display: flex;
@@ -183,6 +252,9 @@
   text-align: right;
 }
 
+=======
+<style>
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 .i-watch-pic{
 max-width: 300px;
     max-height: 300px;
@@ -204,6 +276,7 @@ max-width: 300px;
   border:10px solid #333333;
   background: white;
   max-width: 800px!important;
+<<<<<<< HEAD
   padding: 38px;
   position: relative;
 }
@@ -213,12 +286,29 @@ h2.i-watch-container-name {
   font-family: gotham;
   text-align: center;
   margin: 0;
+=======
+  padding: 48px;
+  position: relative;
+}
+.i-watch-title{
+  margin: 0;
+  font-size: 24px;
+  font-family: gotham;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
   line-height: 24px;
   margin-bottom: 48px;
 }
 .i-watch-item{
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
+=======
+  padding: 20px;
+  padding-top:0px;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 }
 .i-dialog{
   border:10px solid #333333;
@@ -227,6 +317,7 @@ h2.i-watch-container-name {
   padding-top:1px;
 }
 .i-watch-img{
+<<<<<<< HEAD
   flex: 1;
   flex-direction: column;
   display: flex;
@@ -234,26 +325,47 @@ h2.i-watch-container-name {
 }
 .i-watch-img img {
   width: 100%;
+=======
+  width:50%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 }
 .i-watch-body{
   display:flex;
   flex-direction: column;
+<<<<<<< HEAD
   flex: 1;
+=======
+  justify-content:center;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 }
 .i-watch-body-line{
   display:flex;
   flex-direction: row;
+<<<<<<< HEAD
   padding-bottom:16px;
+=======
+  padding-bottom:10px;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 }
 .i-watch-body-line-left{
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   padding-right: 10px;
+=======
+  width: 100%;
+  padding-right: 10px;
+  justify-content: flex-end;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
   color:#818181;
 }
 .i-watch-body-line-right{
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   color:#58595B;
   font-weight: bold;
 }
@@ -269,6 +381,12 @@ h2.i-watch-container-name {
   font-size: 14px;
   padding-bottom: 48px;
 }
+=======
+  width: 80%;
+  color:#58595B;
+  font-weight: bold;
+}
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 .i-watch-body-line-title{
 font-weight: bold;
 }
@@ -277,6 +395,7 @@ font-weight: bold;
     max-width: 100%;
   }
 @media only screen and (max-width: 600px) {
+<<<<<<< HEAD
   .i-watch-container {
     padding: 30px;
   }
@@ -286,6 +405,8 @@ font-weight: bold;
   .i-watch-close {
     right: 0
   }
+=======
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
  .i-watch-item{
    flex-direction:column;
  }
@@ -300,7 +421,11 @@ font-weight: bold;
    font-size:12px;
  }
  .i-watch-body-line{
+<<<<<<< HEAD
   padding-bottom: 10px;
+=======
+  padding-bottom:0px;
+>>>>>>> 789d82e4a6be9b2b5504684c65cbbbe964942d54
 }
 .i-watch-container{
    max-width: 100%!important;
