@@ -6,60 +6,31 @@
       transition-hide="slide-down">
       <q-resize-observer @resize="onResize" />
      <div class="i-watch-container" >
+      <h2 class="i-watch-title">{{itemDetail.description}}</h2>
        <div class="i-watch-close">
        <q-btn icon="close" flat round dense v-close-popup @click="$emit('close')" />
        </div>
         <div class="i-watch-item">
           <div class="i-watch-img">
-            <!--<q-img v-if="item"
-                :src="getItemImageUrl(item.id)"
-                spinner-color="grey-5"
-                class="i-watch-grmoroi"
-              />-->
+            <div class="i-watch-body-line">
+              <div class="i-watch-body-line-right">
+                {{itemDetail.itemCatefory}}
+              </div>
+            </div>
             <img v-if="item" class="t-watch-pic" :src="getItemImageUrl(item.id)"/>
           </div>
           <div class="i-watch-body" v-if="Object.keys(itemDetail).length !== 0">
-            <div class="i-watch-body-line q-mb-sm i-watch-body-line-title">
-               {{itemDetail.description}}
-            </div>
-<!--
-    JObject.Add(JProperty.JProperty('description', StageItemAttributes."Extended Description"));
-    JObject.Add(JProperty.JProperty('gender', StageItemAttributes.Gender));
-    JObject.Add(JProperty.JProperty('caseSize', StageItemAttributes."Case Size (mm)"));
-    JObject.Add(JProperty.JProperty('caseMaterial', StageItemAttributes."Case Material"));
-    JObject.Add(JProperty.JProperty('crystalType', StageItemAttributes."Crystal Type"));
-    JObject.Add(JProperty.JProperty('movementCaliber', StageItemAttributes."Movement Caliber"));
-    JObject.Add(JProperty.JProperty('functionType', StageItemAttributes."Function Type"));
-    JObject.Add(JProperty.JProperty('dialMaterial', StageItemAttributes."Dial Material"));
-    JObject.Add(JProperty.JProperty('bezelMaterial', StageItemAttributes."Bezel Material"));
-    JObject.Add(JProperty.JProperty('crownType', StageItemAttributes."Crown Type"));
-    JObject.Add(JProperty.JProperty('brand', StageItemAttributes.Brand));
-{
-  "no": "1911000001",
-  "description": "Flower - Alien Jack - 3.5g",
-  "GTIN": "",
-  "strainCode": "ALIEN JACK",
-  "itemCatefory": "Finished Premium Flower",
-  "productGroup": "Dry Flower",
-  "baseUnitOfMeasure": "EA",
-  "allowance": 0.0,
-  "THC": 0.0,
-  "CBD": 0.0,
-  "CBN": 0.0
-}
-  -->
             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                No:
-              </div>
               <div class="i-watch-body-line-right">
                {{itemDetail.no}}
               </div>
             </div>
             <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Description
+              <div class="i-watch-body-line-right">
+               {{itemDetail.productGroup}}
               </div>
+            </div>
+            <div class="i-watch-body-line">
               <div class="i-watch-body-line-right">
                {{itemDetail.description}}
               </div>
@@ -72,30 +43,14 @@
                {{itemDetail.strainCode}}
               </div>
             </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Category
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.itemCatefory}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
-              <div class="i-watch-body-line-left">
-                Product Group:
-              </div>
-              <div class="i-watch-body-line-right">
-               {{itemDetail.productGroup}}
-              </div>
-            </div>
-            <div class="i-watch-body-line">
+            <!--<div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
                 Unit Of Measure:
               </div>
               <div class="i-watch-body-line-right">
                {{itemDetail.baseUnitOfMeasure}}
               </div>
-            </div>
+            </div>-->
             <div class="i-watch-body-line">
               <div class="i-watch-body-line-left">
                 THC:
@@ -153,6 +108,9 @@ max-width: 300px;
   flex-direction: row;
   justify-content: flex-end;
   padding:3px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .i-watch-container{
   display: flex;
@@ -160,6 +118,18 @@ max-width: 300px;
   border:10px solid #333333;
   background: white;
   max-width: 800px!important;
+  padding: 48px;
+  position: relative;
+}
+.i-watch-title{
+  margin: 0;
+  font-size: 24px;
+  font-family: gotham;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 24px;
+  margin-bottom: 48px;
 }
 .i-watch-item{
   display: flex;
@@ -175,7 +145,7 @@ max-width: 300px;
 }
 .i-watch-img{
   width:50%;
-  justify-content: center;
+  flex-direction: column;
   display: flex;
   align-items: center;
 }

@@ -45,7 +45,7 @@
                       </div>
                       <div>
                         <div class="i-history-body-price">  <q-icon name="phone" /> {{location.storePhone}} </div>
-                        <div class="i-history-body-price">  <q-icon name="mail" /> {{location.storeEmail}} </div>
+                        <div class="i-history-body-price">  <q-icon name="mail" /> <div> {{location.storeEmail}} </div> </div>
                       </div>
                       </div>
                     </div>
@@ -178,6 +178,7 @@ font-size:15px;
 .store-list{
   display:flex;
   flex: 1;
+  justify-content: baseline;
 }
 
 .store-list > div {
@@ -213,6 +214,16 @@ font-size:15px;
 
 .store-list .i-history-body-price i {
   color: #cccccc;
+  margin-top: 3px;
+}
+
+.store-list .i-history-body-price > div{
+  padding-left: 5px;
+}
+
+.store-list .i-history-body-price:last-child {
+  display: flex;
+  word-break: break-all;
 }
 
 @media only screen and (max-width: 991px) {
