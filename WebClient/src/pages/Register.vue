@@ -30,8 +30,13 @@
             <span class="i-login-input-title"> CONFIRM PASSWORD </span>
             <q-input outlined stack-label square color="grey" bg-color="white" :error="$v.regFormNew.confirmPass.$error"
             v-model="regFormNew.confirmPass" class="" type="password"/>
-            <q-checkbox v-model="term" label="Yes, I understand and agree to the Verilife Terms of Service, including the User Agreement and Privacy Policy." />
-            <div @click="registerButtonClicked" class="i-btn-r q-mt-sm">REGISTER</div>
+            <div class="text-white">
+              <q-checkbox dark color='blue' v-model="age" label="You must be over 21 years old" />
+            </div>
+            <div class="text-white">
+              <q-checkbox dark color='blue' v-model="term" label="Do you agree with terms and conditions?" />
+            </div>
+            <div :disabled="!term || !age" @click="registerButtonClicked" class="i-btn-r q-mt-sm">REGISTER</div>
             <div class="i-content-text-forgot q-mt-lg" @click="backToLogin">Back to Login</div>
       </div>
     </transition>
@@ -200,7 +205,8 @@ export default {
   data () {
     return {
       page: '',
-      term: true,
+      term: false,
+      age: false,
       account: null,
       externalID: '',
       regForm: {
@@ -365,54 +371,56 @@ export default {
     },
     registerButtonClicked () {
       var me = this
-      me.$v.regFormNew.$touch()
-      if (me.$v.regFormNew.$error) {
-        var txt = ''
-        if (me.regFormNew.pass.length < 6) {
-          txt += 'Minimum password length is 6 symbols.'
-        }
-        if (me.dismiss) {
-          me.dismiss()
-        }
-        me.dismiss = me.$q.notify({
-          message: 'Correct the highlighted fields. ' + txt,
-          position: 'bottom',
-          timeout: 3000,
-          color: 'negative'
-        })
-        return
-      }
-      me.$q.loading.show()
-      contactService.contactRegisterByEmail(me.regFormNew.name, me.regFormNew.email, me.regFormNew.pass).then((response) => {
-        if (response.error) {
+      if (me.term && me.age) {
+        me.$v.regFormNew.$touch()
+        if (me.$v.regFormNew.$error) {
+          var txt = ''
+          if (me.regFormNew.pass.length < 6) {
+            txt += 'Minimum password length is 6 symbols.'
+          }
           if (me.dismiss) {
             me.dismiss()
           }
           me.dismiss = me.$q.notify({
-            message: response.error,
+            message: 'Correct the highlighted fields. ' + txt,
             position: 'bottom',
             timeout: 3000,
             color: 'negative'
           })
           return
         }
-        me.account = {
-          id: response.accountID
-        }
-        me.login()
-      }, (error) => {
-        if (me.dismiss) {
-          me.dismiss()
-        }
-        me.dismiss = me.$q.notify({
-          message: error.data.error,
-          position: 'bottom',
-          timeout: 3000,
-          color: 'negative'
+        me.$q.loading.show()
+        contactService.contactRegisterByEmail(me.regFormNew.name, me.regFormNew.email, me.regFormNew.pass).then((response) => {
+          if (response.error) {
+            if (me.dismiss) {
+              me.dismiss()
+            }
+            me.dismiss = me.$q.notify({
+              message: response.error,
+              position: 'bottom',
+              timeout: 3000,
+              color: 'negative'
+            })
+            return
+          }
+          me.account = {
+            id: response.accountID
+          }
+          me.login()
+        }, (error) => {
+          if (me.dismiss) {
+            me.dismiss()
+          }
+          me.dismiss = me.$q.notify({
+            message: error.data.error,
+            position: 'bottom',
+            timeout: 3000,
+            color: 'negative'
+          })
+        }).then(() => {
+          me.$q.loading.hide()
         })
-      }).then(() => {
-        me.$q.loading.hide()
-      })
+      }
     }
   }
 }
