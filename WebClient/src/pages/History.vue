@@ -38,7 +38,7 @@
                       <div class="i-history-body-name">{{sale.item.description}}</div>
                       <div class="i-history-body-refund" v-if="sale.refund">REFUNDED</div>
                     </div>
-                    <div class="i-history-body-price"> $ {{thousandsSeparators(sale.netAmt + sale.discountAmt)}}</div>
+                    <div class="i-history-body-price"> $ {{parseFloat(thousandsSeparators(sale.netAmt + sale.discountAmt)).toFixed(2)}}</div>
                   </div>
               </div>
             </div>
@@ -67,7 +67,7 @@
                   <div class="" v-if="transaction.refund">
                     <span class="i-history-body-refund">REFUNDED</span>
                   </div>
-                  <div class="i-history-trans-price">$ {{thousandsSeparators(transaction.netAmt)}}</div>
+                  <div class="i-history-trans-price">$ {{parseFloat(thousandsSeparators(transaction.netAmt)).toFixed(2)}}</div>
                   <div @click="getReceiptJSON(transaction)" class="i-history-trans-get"><q-icon name="visibility" /> VIEW</div>
                   <a :href="getReceiptUrl(transaction)" target="_blank" style="text-decoration:none">
                   <div class="i-history-trans-get"><q-icon name="get_app" /> DOWNLOAD</div>

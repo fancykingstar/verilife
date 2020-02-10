@@ -30,6 +30,7 @@
             <span class="i-login-input-title"> CONFIRM PASSWORD </span>
             <q-input outlined stack-label square color="grey" bg-color="white" :error="$v.regFormNew.confirmPass.$error"
             v-model="regFormNew.confirmPass" class="" type="password"/>
+            <q-checkbox v-model="term" label="Yes, I understand and agree to the Verilife Terms of Service, including the User Agreement and Privacy Policy." />
             <div @click="registerButtonClicked" class="i-btn-r q-mt-sm">REGISTER</div>
             <div class="i-content-text-forgot q-mt-lg" @click="backToLogin">Back to Login</div>
       </div>
@@ -199,6 +200,7 @@ export default {
   data () {
     return {
       page: '',
+      term: true,
       account: null,
       externalID: '',
       regForm: {
