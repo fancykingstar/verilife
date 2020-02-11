@@ -31,10 +31,10 @@
             <q-input outlined stack-label square color="grey" bg-color="white" :error="$v.regFormNew.confirmPass.$error"
             v-model="regFormNew.confirmPass" class="" type="password"/>
             <div class="text-white">
-              <q-checkbox dark color='blue' v-model="age" label="You must be over 21 years old" />
+              <q-checkbox dark color='blue' v-model="age" label="I am 19 years or older" />
             </div>
             <div class="text-white">
-              <q-checkbox dark color='blue' v-model="term" label="Do you agree with terms and conditions?" />
+              <q-checkbox dark color='blue' v-model="term" label="I agree with terms and conditions" />
             </div>
             <div :disabled="!term || !age" @click="registerButtonClicked" class="i-btn-r q-mt-sm">REGISTER</div>
             <div class="i-content-text-forgot q-mt-lg" @click="backToLogin">Back to Login</div>
