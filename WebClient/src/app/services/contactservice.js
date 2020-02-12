@@ -188,12 +188,13 @@ function getLocations () {
   })
 }
 
-function contactCheckByEmail (email) {
+function contactCheckByEmail (email, code) {
   return httpservice({
     url: controller + 'ContactCheckByEmail',
     method: 'GET',
     params: {
-      Email: email
+      Email: email,
+      code: code
     }
   })
 }

@@ -140,12 +140,18 @@ namespace InvictaService.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("api/[controller]/ContactCheckByEmail")]
-        public string ContactCheckByEmail(string Email)
+        public string ContactCheckByEmail(string email, string code)
         {
+            var Email = email;
             var ret = _JSONWebService.GetJSON("ContactCheckByEmail", Email);
             if (ret == "Not exist")
             {
-                return ret;
+                MailService ms = new MailService(_configuration);
+                var dir = _configuration["MailTemplate:dir"];
+                string template = System.IO.File.ReadAllText(dir + "\\sendcode.html");
+                string replaced = template.Replace("{code}", code);
+                ms.SendEmail(Email, "Loyalty Registration Code", replaced);
+                return "CodeSent";
             }
             else
             {
@@ -154,7 +160,7 @@ namespace InvictaService.Controllers
                 string template = System.IO.File.ReadAllText(dir + "\\sendcode.html");
                 string replaced = template.Replace("{code}", ret);
                 ms.SendEmail(Email, "Loyalty Registration Code", replaced);
-                return "Sent";
+                return "sent";
             }
         }
 

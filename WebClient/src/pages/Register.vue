@@ -17,7 +17,21 @@
       appear
       enter-active-class="animated slideInRight"
     >
-      <div class="i-login-content"  v-show="page === 'register'">
+      <div style="width: 280px;" class="i-login-content" v-show="page === 'register' && isVerifed === false">
+        <span style="text-transform: capitalize;" class="i-login-input-title">Device verification code</span>
+        <q-input style="margin-bottom: 20px;" outlined stack-label square color="grey" bg-color="white" v-model="verifyCode" class="" type="text"/>
+        <q-btn color="secondary" label="Verify" @click="verifyEmail" />
+        <div style="color: #C7C8CA; word-break: break-all; margin-top: 10px">
+          We just sent your authentication code via email to {{alertEmail}}.
+        </div>
+      </div>
+    </transition>
+
+    <transition
+      appear
+      enter-active-class="animated slideInRight"
+    >
+      <div class="i-login-content"  v-show="page === 'register' && isVerifed === true">
             <span class="i-login-input-title"> NAME </span>
             <q-input outlined stack-label square color="grey" bg-color="white" :error="$v.regFormNew.name.$error"
             v-model="regFormNew.name" class="" type="text"/>
@@ -188,7 +202,7 @@ color: #C7C8CA;
     min-width: 222px;
   }
   .i-login-view {
-    padding-right: 20%;
+    /* padding-right: 20%; */
   }
 }
 </style>
@@ -207,8 +221,12 @@ export default {
       page: '',
       term: false,
       age: false,
+      verifyCode: '',
+      isVerifed: false,
       account: null,
       externalID: '',
+      code: '',
+      alertEmail: '',
       regForm: {
         name: '',
         email: '',
@@ -254,7 +272,17 @@ export default {
     emailCheckRegistration () {
       var me = this
       me.$q.loading.show()
-      contactService.contactCheckByEmail(me.externalID).then((response) => {
+      contactService.contactCheckByEmail(me.externalID, me.code).then((response) => {
+        var leng = me.externalID.length
+        var start = me.externalID.slice(0, 1)
+        var end = '@' + me.externalID.split('@')[1]
+        var i = 0
+        var asto = ''
+        while (i < leng - end.length - 1) {
+          asto = asto + '*'
+          i++
+        }
+        me.alertEmail = start + asto + end
         if (response === 'Not exist') {
           me.regFormNew.email = me.externalID
           me.page = 'register'
@@ -269,6 +297,10 @@ export default {
     },
     loginClicked () {
       var me = this
+      var min = 100000
+      var max = 999999
+      me.code = Math.floor(Math.random() * (max - min + 1) + min)
+
       me.$v.externalID.$touch()
       if (me.$v.externalID.$error) {
         if (me.dismiss) {
@@ -326,6 +358,22 @@ export default {
       }).then(() => {
         me.$q.loading.hide()
       })
+    },
+    verifyEmail () {
+      var me = this
+      if (me.code.toString() === me.verifyCode) {
+        me.isVerifed = true
+      } else {
+        if (me.dismiss) {
+          me.dismiss()
+        }
+        me.dismiss = me.$q.notify({
+          message: 'Incorrect verification code provided.',
+          position: 'top',
+          timeout: 3000,
+          color: 'negative'
+        })
+      }
     },
     registerContinue () {
       var me = this
