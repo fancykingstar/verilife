@@ -24,7 +24,7 @@
           <q-tab-panel name="watch">
               <div class="i-history-transactions"  v-for="(transaction, idx) in contact.transactions" :key="idx">
                 <div v-for="(sale, idx2) in transaction.saleLines" :key="idx2" >
-                  <div class="i-history-item">
+                  <div class="i-history-item watch">
                     <div class="i-history-img">
                       <q-img @click="openWatch(sale.item)"
                           :src="getItemImageUrl(sale.item.id)"
@@ -249,6 +249,29 @@ font-size:15px;
   font-family: Din;
   font-size: 14px;
   text-align: left;
+}
+
+@media only screen and (max-width: 767px) {
+  .i-history-item.watch .i-history-body {
+    flex: 1;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .i-history-item.watch {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .i-history-item.watch .img {
+    width: 50%
+  }
+
+  .i-history-item.watch .i-history-body {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
