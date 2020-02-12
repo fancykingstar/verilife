@@ -89,7 +89,10 @@
                 <div class="i-pop-body">
                   <img src="statics/veri-logo-black.png">
                   <div style="font-family:Merch" v-for="(line, idx3) in receiptLines" :key="'r-' + idx3">
-                    <span v-if="line.fontType === 0" v-html="line.lineText"></span>
+                    <barcode width="1" height="80" fontSize="14" v-if="idx3 === receiptLines.length-2" v-bind:value="line.lineText">
+                      Show this if the rendering fails.
+                    </barcode>
+                    <span v-if="line.fontType === 0 && idx3 !== receiptLines.length-2" v-html="line.lineText"></span>
                     <span style="font-weight:bold" v-if="line.fontType !== 0" v-html="line.lineText"></span>
                   </div>
                   <!--<img src="statics/receipt-footer.png">-->
@@ -288,11 +291,13 @@ import moment from 'moment'
 import watch from '../components/watch'
 import contactService from '../app/services/contactservice'
 import userData from '../app/services/userdata'
+import VueBarcode from 'vue-barcode'
 
 export default {
   name: 'History',
   components: {
-    watch: watch
+    watch: watch,
+    'barcode': VueBarcode
   },
   data () {
     return {
@@ -302,7 +307,8 @@ export default {
       watchDialog: false,
       receiptLines: [],
       receiptDialog: false,
-      maximizedToggle: true
+      maximizedToggle: true,
+      barcodeValue: 'T00000P0003000000003'
     }
   },
   computed: {
@@ -386,7 +392,7 @@ export default {
       me.$q.loading.show()
       var store = transaction.tenderLines[0].storeId
       contactService.getDigitalReceiptJSON(store, transaction.terminal, transaction.id, me.contact.externalInfo.companyName).then((receipt) => {
-        console.log(receipt)
+        console.log(receipt.printLines, '999999999999')
         _.each(receipt.printLines, (line) => {
           line.lineText = line.lineText.replace(/ /g, '&nbsp;')
         })
