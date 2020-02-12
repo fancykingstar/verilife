@@ -283,7 +283,7 @@ export default {
           i++
         }
         me.alertEmail = start + asto + end
-        if (response === 'Not exist') {
+        if (response === 'CodeSent') {
           me.regFormNew.email = me.externalID
           me.page = 'register'
         } else {
